@@ -11,7 +11,7 @@ public class SnapMessageHelper {
     public static MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 
     public static void deathMessage(EntityLivingBase entity) {
-        TextComponentString msg = new TextComponentString(entity.getName());
+        TextComponentString msg = new TextComponentString(entity.getName() + " ");
         msg.appendSibling(new TextComponentTranslation("infinity.snap.death"));
         server.getPlayerList().sendMessage(msg);
 

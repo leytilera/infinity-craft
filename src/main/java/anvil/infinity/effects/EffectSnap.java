@@ -2,8 +2,10 @@ package anvil.infinity.effects;
 
 import anvil.infinity.Infinity;
 import anvil.infinity.SoundHelper;
+import anvil.infinity.helpers.SnapMessageHelper;
 import anvil.infinity.registry.Effects;
 import anvil.infinity.registry.Sounds;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -27,7 +29,11 @@ public class EffectSnap extends Potion {
         if (e.getEntityLiving().getActivePotionEffect(Effects.snapEffect) != null) {
             if (e.getEntityLiving().getActivePotionEffect(Effects.snapEffect).getDuration() == 1) {
                 e.getEntityLiving().playSound(Sounds.snap, 5, 0);
+                if (e.getEntityLiving().hasCustomName() || e.getEntityLiving() instanceof EntityPlayer) {
+                    SnapMessageHelper.deathMessage(e.getEntityLiving());
+                }
                 e.getEntityLiving().setHealth(0);
+
 
 
 
