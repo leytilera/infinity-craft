@@ -24,7 +24,7 @@ public class Infinity {
 
     public static final String MOD_ID = "infinity";
     public static final String MOD_NAME = "Infinityraft";
-    public static final String VERSION = "1.2";
+    public static final String VERSION = "1.3";
     public static final String DEPENDENCIES = "required-after:lucraftcore@[1.12.2-2.4.0,)";
 
     /**
