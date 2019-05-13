@@ -1,0 +1,27 @@
+{
+    "display": {
+        "icon": {
+            "item": "infinity:mind_stone"
+        },
+        "title": {
+            "translate": "infinity.advancements.infinity.mind_stone.title"
+        },
+        "description": {
+            "translate": "infinity.advancements.infinity.mind_stone.description"
+        },
+        "frame": "goal"
+    },
+    "parent": "lucraftcore:infinity/root",
+    "criteria": {
+        "item": {
+            "trigger": "minecraft:inventory_changed",
+            "conditions": {
+                "items": [
+                    {
+                        "item": "infinity:mind_stone"
+                    }
+                ]
+            }
+        }
+    }
+}

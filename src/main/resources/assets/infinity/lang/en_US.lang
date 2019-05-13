@@ -5,3 +5,15 @@ item.time_stone.name=Time Stone
 item.mind_stone.name=Mind Stone
 infinity.snap.text=You should have gone for the head.
 infinity.snap.death=was dusted away
+
+
+# Advancements
+
+infinity.advancements.infinity.time_stone.title=Time
+infinity.advancements.infinity.time_stone.description=Get the Time Stone
+infinity.advancements.infinity.soul_stone.title=Soul
+infinity.advancements.infinity.soul_stone.description=Get the Soul Stone
+infinity.advancements.infinity.mind_stone.title=Mind
+infinity.advancements.infinity.mind_stone.description=Get the Mind Stone
+infinity.advancements.infinity.power_stone.title=Power
+infinity.advancements.infinity.power_stone.description=Get the Power Stone
