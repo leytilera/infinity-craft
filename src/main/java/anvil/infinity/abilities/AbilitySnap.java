@@ -1,6 +1,7 @@
 package anvil.infinity.abilities;
 
 import anvil.infinity.compat.CompatHandler;
+import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityAction;
@@ -36,7 +37,7 @@ public class AbilitySnap extends AbilityAction {
 
     @Override
     public boolean action() {
-        if (CompatHandler.HeroesExpension.hasFullGauntlet(entity)) {
+        if (GauntelHelper.hasFullGauntlet(entity)) {
             World w = entity.getEntityWorld();
                 List<Entity> entities = w.loadedEntityList;
                 boolean kill = false;

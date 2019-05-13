@@ -1,12 +1,10 @@
 package anvil.infinity.effects;
 
 import anvil.infinity.Infinity;
-import anvil.infinity.SoundHelper;
 import anvil.infinity.helpers.SnapMessageHelper;
 import anvil.infinity.registry.Effects;
 import anvil.infinity.registry.Sounds;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.event.entity.living.LivingEvent;

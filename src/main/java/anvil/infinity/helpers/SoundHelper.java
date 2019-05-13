@@ -1,4 +1,4 @@
-package anvil.infinity;
+package anvil.infinity.helpers;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.util.SoundEvent;

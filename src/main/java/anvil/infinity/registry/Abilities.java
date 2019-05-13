@@ -1,6 +1,7 @@
-package anvil.infinity.abilities;
+package anvil.infinity.registry;
 
 import anvil.infinity.Infinity;
+import anvil.infinity.abilities.*;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityEntry;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;

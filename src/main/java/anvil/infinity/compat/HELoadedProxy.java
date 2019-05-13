@@ -14,7 +14,7 @@ public class HELoadedProxy implements HEProxy {
     }
 
     @Override
-    public boolean hasFullGauntlet(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityPortal.class) && Ability.hasAbility(entity, AbilityHasPowerStone.class) && Ability.hasAbility(entity, AbilityHasRealityStone.class) && Ability.hasAbility(entity, AbilityHasSoulStone.class) && Ability.hasAbility(entity, AbilityHasTimeStone.class) && Ability.hasAbility(entity, AbilityHasMindStone.class);
+    public boolean hasSpaceStone(EntityLivingBase entity) {
+        return Ability.hasAbility(entity, AbilityPortal.class);
     }
 }

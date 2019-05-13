@@ -3,4 +3,5 @@ out
 run
 *.iml
 .idea
+.gradle
 classes
