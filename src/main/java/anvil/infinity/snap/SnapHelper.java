@@ -1,6 +1,7 @@
 package anvil.infinity.snap;
 
 import anvil.infinity.config.ConfigHandler;
+import anvil.infinity.data.EntityData;
 import anvil.infinity.data.GauntletUserInformation;
 import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
@@ -29,9 +30,10 @@ public class SnapHelper {
     static MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
 
     public static boolean snap(EntityLivingBase entity) {
+        EntityData data = GauntletUserInformation.getDataByEntity(entity);
         if (GauntelHelper.hasFullGauntlet(entity)) {
             World w = entity.getEntityWorld();
-            if (GauntletUserInformation.getDataByEntity(entity).selectedSnapResult == SnapResult.KILLHALF) {
+            if (data.selectedSnapResult == SnapResult.KILLHALF) {
                 List<Entity> entities = w.loadedEntityList;
                 boolean kill = false;
 
@@ -53,26 +55,32 @@ public class SnapHelper {
                     kill = !kill;
                 }
                 return true;
-            } else if (GauntletUserInformation.getDataByEntity(entity).selectedSnapResult == SnapResult.DESTROYSTONES) {
-                entity.setHealth(1);
-                ItemStack gauntlet;
-                if (entity.getHeldItem(EnumHand.MAIN_HAND).getItem().equals(ModuleInfinity.INFINITY_GAUNTLET)) {
-                    gauntlet = entity.getHeldItem(EnumHand.MAIN_HAND);
-                } else {
-                    gauntlet = entity.getHeldItem(EnumHand.OFF_HAND);
-                }
+            } else if (data.selectedSnapResult == SnapResult.DESTROYSTONES) {
+                    entity.setHealth(1);
+                    if (entity.getHeldItem(EnumHand.MAIN_HAND).getItem().equals(ModuleInfinity.INFINITY_GAUNTLET)) {
+                        entity.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModuleInfinity.INFINITY_GAUNTLET));
+                    } else {
+                        entity.setHeldItem(EnumHand.OFF_HAND, new ItemStack(ModuleInfinity.INFINITY_GAUNTLET));
+                    }
+                    entity.setHealth(1);
 
-            } else if (GauntletUserInformation.getDataByEntity(entity).selectedSnapResult == SnapResult.CREATIVE) {
+
+            } else if (data.selectedSnapResult == SnapResult.CREATIVE) {
                 if (ConfigHandler.snapCreative) {
                     if (entity instanceof EntityPlayer) {
-                        ((EntityPlayer) entity).setGameType(GameType.CREATIVE);
+
+                        if (((EntityPlayer) entity).capabilities.isCreativeMode) {
+                            ((EntityPlayer) entity).setGameType(GameType.SURVIVAL);
+                        } else {
+                            ((EntityPlayer) entity).setGameType(GameType.CREATIVE);
+                        }
                         return true;
                     }
                 }
-            } else if (GauntletUserInformation.getDataByEntity(entity).selectedSnapResult == SnapResult.BRINGBACK) {
+            } else if (data.selectedSnapResult == SnapResult.BRINGBACK) {
 
-            } else if (GauntletUserInformation.getDataByEntity(entity).selectedSnapResult == SnapResult.RECREATE) {
-                
+            } else if (data.selectedSnapResult == SnapResult.RECREATE) {
+
             }
         }
         return false;
