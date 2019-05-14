@@ -21,6 +21,7 @@ public class Abilities {
         e.getRegistry().register(new AbilityEntry(AbilityHasSoulStone.class, new ResourceLocation(Infinity.MOD_ID, "soul")));
         e.getRegistry().register(new AbilityEntry(AbilityHasTimeStone.class, new ResourceLocation(Infinity.MOD_ID, "time")));
         e.getRegistry().register(new AbilityEntry(AbilityHasMindStone.class, new ResourceLocation(Infinity.MOD_ID, "mind")));
+        e.getRegistry().register(new AbilityEntry(AbilityChangeSnap.class, new ResourceLocation(Infinity.MOD_ID, "changesnap")));
     }
 
 

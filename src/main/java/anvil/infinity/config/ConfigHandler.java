@@ -11,6 +11,8 @@ public class ConfigHandler {
     public static boolean useSHRealityAbilities;
     public static boolean sizeChanging;
     public static float size;
+    public static int soulWorldID;
+    public static boolean snapCreative;
 
     public static void refreshConfig(File file) {
         config = new Configuration(file);
@@ -27,6 +29,8 @@ public class ConfigHandler {
         useSHRealityAbilities = config.getBoolean("SH Reality Stone abilities", category, false, "Should the Reality Stone have the abilities of the Speedster Heroes Reality Stone if it is installed");
         sizeChanging = config.getBoolean("Size changing", category, true, "Should the Reality Stone be able to change the size");
         size = config.getFloat("Size", category, 0.1f, 0.1f,10, "Which size should the Reality Stone change it's user to");
+        soulWorldID = config.getInt("Soul World ID", category, 10, -255, 255, "The ID of the Soul World Dimension");
+        snapCreative = config.getBoolean("Can Snap change Gamemode", category, false, "Can the Snap change the Gamemode to Creative");
     }
 
 }

@@ -1,8 +1,11 @@
 package anvil.infinity.abilities;
 
 import anvil.infinity.compat.CompatHandler;
+import anvil.infinity.data.GauntletUserInformation;
 import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
+import anvil.infinity.snap.SnapHelper;
+import anvil.infinity.snap.SnapResult;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityAction;
 import net.minecraft.client.Minecraft;
@@ -15,6 +18,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
@@ -28,7 +32,7 @@ import java.util.Random;
 
 public class AbilitySnap extends AbilityAction {
 
-    MinecraftServer server = FMLCommonHandler.instance().getMinecraftServerInstance();
+
 
 
     public AbilitySnap(EntityLivingBase entity) {
@@ -37,31 +41,7 @@ public class AbilitySnap extends AbilityAction {
 
     @Override
     public boolean action() {
-        if (GauntelHelper.hasFullGauntlet(entity)) {
-            World w = entity.getEntityWorld();
-                List<Entity> entities = w.loadedEntityList;
-                boolean kill = false;
-
-                PlayerList players = server.getPlayerList();
-
-                TextComponentString msg = new TextComponentString(entity.getName() + ": ");
-                msg.appendSibling(new TextComponentTranslation("infinity.snap.text"));
-                msg.getStyle().setColor(TextFormatting.DARK_PURPLE);
-                msg.getStyle().setBold(true);
-                players.sendMessage(msg);
-                Random random = new Random();
-
-
-                for (int i = 0; i < entities.size(); i++) {
-                    if (entities.get(i) != entity && entities.get(i) instanceof EntityLivingBase && kill && !(entities.get(i) instanceof EntityRabbit)) {
-                        EntityLivingBase e = ((EntityLivingBase) entities.get(i));
-                        e.addPotionEffect(new PotionEffect(Effects.snapEffect, random.nextInt((1200 - 10) + 1) - 10));
-                    }
-                    kill = !kill;
-                }
-                return true;
-            }
-        return false;
+        return SnapHelper.snap(entity);
     }
 
     @SideOnly(Side.CLIENT)
