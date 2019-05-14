@@ -1,18 +1,19 @@
 package anvil.infinity.items;
 
 import anvil.infinity.abilities.AbilityHasPowerStone;
+import anvil.infinity.abilities.AbilitySaturation;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.*;
+import lucraft.mods.lucraftcore.superpowers.abilities.supplier.IAbilityProvider;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 
 import java.awt.*;
-import java.util.UUID;
 
-public class ItemPowerStone extends ItemInfinityStone {
+public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvider {
 
     public ItemPowerStone(String name) {
         this.setTranslationKey(name);
@@ -39,6 +40,7 @@ public class ItemPowerStone extends ItemInfinityStone {
         abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
         abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));
         abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+        abilities.put("saturation", new AbilitySaturation(entity));
         return super.addStoneAbilities(entity, abilities, context);
     }
 
@@ -47,5 +49,12 @@ public class ItemPowerStone extends ItemInfinityStone {
         return Integer.MAX_VALUE;
     }
 
-
+    @Override
+    public Ability.AbilityMap addDefaultAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
+        abilities.put("blast", new AbilityEnergyBlast(entity).setDataValue(AbilityEnergyBlast.DAMAGE, Float.MAX_VALUE).setDataValue(AbilityEnergyBlast.COLOR, Color.MAGENTA));
+        abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+        abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));
+        abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+        return abilities;
+    }
 }
