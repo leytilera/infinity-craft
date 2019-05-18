@@ -27,8 +27,8 @@ public enum SnapResult {
         switch (this) {
             case KILLHALF: return "Kill half";
             case DESTROYSTONES: return "Destroy the Stones";
-            case BRINGBACK: return "Bring back the dusted";
-            case RECREATE: return "Recreate the Universe";
+            case BRINGBACK: return "Bring back the dusted (WIP)";
+            case RECREATE: return "Recreate the Universe (WIP)";
             case CREATIVE: return "Change to Creative";
         }
         return "Kill half";
