@@ -1,18 +1,13 @@
 package anvil.infinity.abilities;
 
+import anvil.infinity.Infinity;
 import anvil.infinity.conditions.ICondition;
-import anvil.infinity.registry.Effects;
+import anvil.infinity.networking.PackageReq;
+import io.netty.buffer.ByteBuf;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityAction;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.relauncher.Side;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 
 public class AbilityKill extends AbilityAction {
 
@@ -35,19 +30,9 @@ public class AbilityKill extends AbilityAction {
 
     @Override
     public boolean action() {
-        if (condition.isFulfilled(entity)) {
-            if (FMLCommonHandler.instance().getEffectiveSide() == Side.SERVER) {
-                World w = FMLCommonHandler.instance().getMinecraftServerInstance().getEntityWorld();
-                RayTraceResult result = Minecraft.getMinecraft().objectMouseOver;
-                System.out.println(result.typeOfHit);
-                if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
-                    Entity e = w.getEntityByID(result.entityHit.getEntityId());
-                    if (e instanceof EntityLivingBase) {
-                        ((EntityLivingBase) e).addPotionEffect(new PotionEffect(Effects.snapEffect, 1));
-                        return true;
-                    }
-                }
-            }
+        if (condition.isFulfilled(entity) && entity instanceof EntityPlayerMP) {
+            Infinity.NETWORK_WRAPPER.sendTo(new PackageReq(), (EntityPlayerMP) entity);
+            return true;
         }
         return false;
     }
