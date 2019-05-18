@@ -20,8 +20,10 @@ import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.GameType;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -32,9 +34,12 @@ public class SnapHelper {
     public static boolean snap(EntityLivingBase entity) {
         EntityData data = GauntletUserInformation.getDataByEntity(entity);
         if (GauntelHelper.hasFullGauntlet(entity)) {
-            World w = entity.getEntityWorld();
+            WorldServer[] worlds = server.worlds;
             if (data.selectedSnapResult == SnapResult.KILLHALF) {
-                List<Entity> entities = w.loadedEntityList;
+                List<Entity> entities = new ArrayList<Entity>();
+                for (int i = 0; i < worlds.length; i++) {
+                    entities.addAll(worlds[i].loadedEntityList);
+                }
                 boolean kill = false;
 
                 PlayerList players = server.getPlayerList();
