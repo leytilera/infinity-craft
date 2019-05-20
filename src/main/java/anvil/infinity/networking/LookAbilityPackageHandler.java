@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class KillAbilityPackageHandler implements IMessageHandler<PackageReq, IMessage> {
+public class LookAbilityPackageHandler implements IMessageHandler<PackageReq, IMessage> {
 
     @Override
     public IMessage onMessage(PackageReq message, MessageContext ctx) {
@@ -15,6 +15,7 @@ public class KillAbilityPackageHandler implements IMessageHandler<PackageReq, IM
         if (result.typeOfHit == RayTraceResult.Type.ENTITY) {
             PackageKillAbility pack = new PackageKillAbility();
             pack.entity = result.entityHit;
+            pack.abilityID = message.id;
             Infinity.NETWORK_WRAPPER.sendToServer(pack);
         }
 

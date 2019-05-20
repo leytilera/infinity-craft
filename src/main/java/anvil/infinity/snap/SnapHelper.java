@@ -14,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.management.PlayerList;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
@@ -67,7 +68,7 @@ public class SnapHelper {
                     } else {
                         entity.setHeldItem(EnumHand.OFF_HAND, new ItemStack(ModuleInfinity.INFINITY_GAUNTLET));
                     }
-                    entity.setHealth(1);
+                    entity.attackEntityFrom(DamageSource.MAGIC, (entity.getHealth() / 10) - 0.01f);
 
 
             } else if (data.selectedSnapResult == SnapResult.CREATIVE) {

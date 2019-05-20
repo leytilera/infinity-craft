@@ -2,12 +2,11 @@ package anvil.infinity;
 
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
-import anvil.infinity.networking.KillAbilityPackageHandler;
-import anvil.infinity.networking.KillAbilityReturnPackageHandler;
+import anvil.infinity.networking.LookAbilityPackageHandler;
+import anvil.infinity.networking.LookAbilityReturnPackageHandler;
 import anvil.infinity.networking.PackageKillAbility;
 import anvil.infinity.networking.PackageReq;
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -16,7 +15,6 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -52,8 +50,8 @@ public class Infinity {
         ConfigHandler.refreshConfig(event.getSuggestedConfigurationFile());
         CompatHandler.check();
         int netID = 0;
-        NETWORK_WRAPPER.registerMessage(KillAbilityReturnPackageHandler.class, PackageKillAbility.class, netID++, Side.SERVER);
-        NETWORK_WRAPPER.registerMessage(KillAbilityPackageHandler.class, PackageReq.class, netID++, Side.CLIENT);
+        NETWORK_WRAPPER.registerMessage(LookAbilityReturnPackageHandler.class, PackageKillAbility.class, netID++, Side.SERVER);
+        NETWORK_WRAPPER.registerMessage(LookAbilityPackageHandler.class, PackageReq.class, netID++, Side.CLIENT);
 
 
     }
