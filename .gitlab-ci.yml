@@ -1,5 +1,5 @@
 before_script:
-  - gradle setupDecompWorkspace
+  - gradlew setupDecompWorkspace
 
 build:
   script:
