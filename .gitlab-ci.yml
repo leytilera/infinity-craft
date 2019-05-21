@@ -1,0 +1,6 @@
+before_script:
+  - gradle setupDecompWorkspace
+
+build:
+  script:
+    - gradle build
