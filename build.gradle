@@ -53,6 +53,8 @@ repositories {
 
 dependencies {
     deobfCompile ("com.gitlab.lcoremodders:LucraftCore:${core_version}")
+    implementation 'com.gitlab.lcoremodders:HeroesExpansion:1.3.3'
+    implementation 'com.gitlab.lcoremodders:SpeedsterHeroes:1e4b1fb951'
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
