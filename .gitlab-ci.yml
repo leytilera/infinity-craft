@@ -4,5 +4,6 @@ before_script:
 build:
   script:
     - ./gradlew build
+    - ./gradlew curseforge285509
   only:
     - web
