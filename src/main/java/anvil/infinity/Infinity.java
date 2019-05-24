@@ -31,7 +31,7 @@ public class Infinity {
 
     public static final String MOD_ID = "infinity";
     public static final String MOD_NAME = "Infinityraft";
-    public static final String VERSION = "1.4";
+    public static final String VERSION = "1.5";
     public static final String DEPENDENCIES = "required-after:lucraftcore@[1.12.2-2.4.0,)";
     public static final SimpleNetworkWrapper NETWORK_WRAPPER = NetworkRegistry.INSTANCE.newSimpleChannel(MOD_ID);
 
