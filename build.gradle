@@ -17,7 +17,17 @@ plugins {
 
 apply plugin: "net.minecraftforge.gradle.forge"
 
-version = modVersion
+
+def getVersionName = { ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+version = getVersionName()
 group = modGroup
 archivesBaseName = modBaseName
 
@@ -95,15 +105,17 @@ processResources {
 }
 
 curseforge {
-    apiKey = "$apiToken"
+    apiKey = apiToken
     project {
-        id = "$projectID"
+        id = projectID
         changelog = file('changelog.txt')
         releaseType = "beta"
         addGameVersion '1.12.2'
 
         mainArtifact(jar) {
-            displayName = "Infinity Craft $modVersion"
+            displayName = "Infinity Craft $getVersionName"
         }
     }
 }
+
+
