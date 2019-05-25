@@ -114,6 +114,10 @@ curseforge {
 
         mainArtifact(jar) {
             displayName = "Infinity Craft $getVersionName"
+            relations {
+                requiredDependency 'lucraft-core'
+                optionalDependency 'heroesexpansion'
+            }
         }
     }
 }
