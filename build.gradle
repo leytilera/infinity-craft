@@ -127,7 +127,7 @@ processResources {
 }
 
 curseforge {
-    apiKey = apiToken
+    apiKey = getAPIKey
     project {
         id = projectID
         changelog = file('changelog.txt')
