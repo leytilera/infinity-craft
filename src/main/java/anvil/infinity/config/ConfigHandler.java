@@ -13,6 +13,7 @@ public class ConfigHandler {
     public static float size;
     public static int soulWorldID;
     public static boolean snapCreative;
+    public static boolean heAbilities;
 
     public static void refreshConfig(File file) {
         config = new Configuration(file);
@@ -31,6 +32,7 @@ public class ConfigHandler {
         size = config.getFloat("Size", category, 0.1f, 0.1f,10, "Which size should the Reality Stone change it's user to");
         soulWorldID = config.getInt("Soul World ID", category, 10, -255, 255, "The ID of the Soul World Dimension");
         snapCreative = config.getBoolean("Can Snap change Gamemode", category, false, "Can the Snap change the Gamemode to Creative");
+        heAbilities = config.getBoolean("HeroesExpansion Abilities", category, true, "Should some stones use abilities from HeroesExpansion");
     }
 
 }

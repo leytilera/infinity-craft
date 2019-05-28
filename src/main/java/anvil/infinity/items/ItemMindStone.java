@@ -3,6 +3,7 @@ package anvil.infinity.items;
 import anvil.infinity.abilities.AbilityChangeSnap;
 import anvil.infinity.abilities.AbilityHasMindStone;
 import anvil.infinity.compat.CompatHandler;
+import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
@@ -37,7 +38,7 @@ public class ItemMindStone extends ItemInfinityStone {
         abilities.put("flight", new AbilityFlight(entity).setDataValue(AbilityFlight.SPEED, 1f));
         abilities.put("mind", new AbilityHasMindStone(entity));
         abilities.put("changesnap", new AbilityChangeSnap(entity));
-        if (CompatHandler.isHeroesExpansion) {
+        if (CompatHandler.isHeroesExpansion && ConfigHandler.heAbilities) {
             abilities.put("telekinesis", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity));
         }
         return super.addStoneAbilities(entity, abilities, context);
