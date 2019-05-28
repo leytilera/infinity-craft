@@ -45,7 +45,7 @@ def getAPIKey = { ->
 version = getVersionName()
 group = modGroup
 archivesBaseName = modBaseName
-apiKey = getAPIKey
+def apiKey = getAPIKey
 
 minecraft {
     version = project.forgeVersion
