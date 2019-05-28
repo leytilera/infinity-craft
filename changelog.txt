@@ -1,1 +1,2 @@
--Fixed stone colors
+-Snap is now possible with Speedster Reality Stone
+-HeroesExpansion abilities can now be disabled
