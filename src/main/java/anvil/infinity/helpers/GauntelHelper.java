@@ -16,6 +16,9 @@ public class GauntelHelper {
     }
 
     public static boolean hasRealityStone(EntityLivingBase entity) {
+        if (CompatHandler.isSpeedsterHeroes) {
+            return CompatHandler.SpeedsterHeroes.hasRealityStone(entity);
+        }
         return Ability.hasAbility(entity, AbilityHasRealityStone.class);
     }
 

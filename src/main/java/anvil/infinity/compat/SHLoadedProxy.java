@@ -1,5 +1,6 @@
 package anvil.infinity.compat;
 
+import anvil.infinity.abilities.AbilityHasRealityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import lucraft.mods.speedsterheroes.abilities.AbilityChangeBlocks;
 import lucraft.mods.speedsterheroes.abilities.AbilitySaveBlock;
@@ -22,4 +23,10 @@ public class SHLoadedProxy implements SHProxy {
     public Ability getAbilityTurnIntoBubbles(EntityLivingBase entity) {
         return new AbilityTurnIntoBubbles(entity);
     }
+
+    @Override
+    public boolean hasRealityStone(EntityLivingBase entity) {
+        return Ability.hasAbility(entity, AbilityHasRealityStone.class) || Ability.hasAbility(entity, AbilitySaveBlock.class);
+    }
+
 }
