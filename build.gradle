@@ -32,11 +32,14 @@ def getVersionName = { ->
 
 def getAPIKey = { ->
     def stdout = new ByteArrayOutputStream()
-    exec {
-        commandLine 'cat', '../apiKey'
-        standardOutput = stdout
+    if (Os.isFamily(Os.FAAMILY_LINUX)) {
+        exec {
+            commandLine 'cat', '../apiKey'
+            standardOutput = stdout
+        }
+        return stdout.toString().trim()
     }
-    return stdout.toString().trim()
+    return "0";
 }
 
 version = getVersionName()
