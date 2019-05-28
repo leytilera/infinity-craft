@@ -45,6 +45,7 @@ def getAPIKey = { ->
 version = getVersionName()
 group = modGroup
 archivesBaseName = modBaseName
+apiKey = getAPIKey
 
 minecraft {
     version = project.forgeVersion
@@ -130,7 +131,7 @@ processResources {
 }
 
 curseforge {
-    apiKey = getAPIKey
+    apiKey = apiKey
     project {
         id = projectID
         changelog = file('changelog.txt')
