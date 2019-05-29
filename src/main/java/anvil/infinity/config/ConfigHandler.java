@@ -14,6 +14,8 @@ public class ConfigHandler {
     public static int soulWorldID;
     public static boolean snapCreative;
     public static boolean heAbilities;
+    public static int powerCooldown;
+    public static boolean stAbilities;
 
     public static void refreshConfig(File file) {
         config = new Configuration(file);
@@ -33,6 +35,8 @@ public class ConfigHandler {
         soulWorldID = config.getInt("Soul World ID", category, 10, -255, 255, "The ID of the Soul World Dimension");
         snapCreative = config.getBoolean("Can Snap change Gamemode", category, false, "Can the Snap change the Gamemode to Creative");
         heAbilities = config.getBoolean("HeroesExpansion Abilities", category, true, "Should some stones use abilities from HeroesExpansion");
+        stAbilities = config.getBoolean("StarTech Abilities", category, true, "Should the Power Stone use the abilities from the StarTech Power Stone if installed");
+        powerCooldown= config.getInt("Power Burst Cooldown", category, 100, 0, 1000, "How big long should the StarTech Power Stone burst cooldown be");
     }
 
 }

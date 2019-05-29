@@ -2,6 +2,8 @@ package anvil.infinity.items;
 
 import anvil.infinity.abilities.AbilityHasPowerStone;
 import anvil.infinity.abilities.AbilitySaturation;
+import anvil.infinity.compat.CompatHandler;
+import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
@@ -41,6 +43,12 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
         abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));
         abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
         abilities.put("saturation", new AbilitySaturation(entity));
+        if (CompatHandler.isStarTech && ConfigHandler.stAbilities) {
+            abilities.put("power_blat", CompatHandler.StarTech.getAbilityPowerBlast(entity).setMaxCooldown(ConfigHandler.powerCooldown));
+            abilities.put("power_impower", CompatHandler.StarTech.getAbilityPowerImpower(entity));
+            abilities.put("power_rocket_burst", CompatHandler.StarTech.getAbilityPowerRocketBurst(entity).setMaxCooldown(100));
+            abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity));
+        }
         return super.addStoneAbilities(entity, abilities, context);
     }
 
@@ -55,6 +63,11 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
         abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
         abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));
         abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+        if (CompatHandler.isStarTech && ConfigHandler.stAbilities) {
+            abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity));
+            abilities.put("power_cyclone", CompatHandler.StarTech.getAbilityCyclone(entity));
+            abilities.put("power_burnout", CompatHandler.StarTech.getAbilityBurnout(entity));
+        }
         return abilities;
     }
 }
