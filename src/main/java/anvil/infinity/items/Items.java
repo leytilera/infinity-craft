@@ -38,11 +38,11 @@ public class Items {
     public static void onRegisterModels(ModelRegistryEvent e) {
         OBJLoader.INSTANCE.addDomain(Infinity.MOD_ID);
 
-        POWER_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(228, 41, 242), Color.WHITE));
-        MIND_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(255, 211, 0), Color.WHITE));
-        REALITY_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(255, 1, 48), Color.WHITE));
-        SOUL_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(255, 139, 0), Color.WHITE));
-        TIME_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(18, 231, 114), Color.WHITE));
+        POWER_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(195, 42, 209), new Color(241, 42, 255)));
+        MIND_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(255, 211, 0), new Color(218, 255, 10)));
+        REALITY_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(225, 1, 48), new Color(255, 1, 48)));
+        SOUL_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(222, 115, 0), new Color(255, 139, 0)));
+        TIME_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(19, 207, 85), new Color(18, 231, 114)));
 
         ItemHelper.registerItemModel(POWER_STONE, Infinity.MOD_ID, "power_stone");
         ItemHelper.registerItemModel(MIND_STONE, Infinity.MOD_ID, "mind_stone");
