@@ -1,4 +1,3 @@
-import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
     repositories {
@@ -32,15 +31,17 @@ def getVersionName = { ->
 
 def getAPIKey = { ->
     def stdout = new ByteArrayOutputStream()
-    if (Os.isFamily(Os.FAMILY_UNIX)) {
+    try {
         exec {
             commandLine 'cat', '../apiKey'
             standardOutput = stdout
         }
         return stdout.toString().trim()
+    } catch(Exception e) {
+        return '0'
     }
 
-    return '0'
+
 }
 
 version = getVersionName()
