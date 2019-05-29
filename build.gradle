@@ -1,4 +1,4 @@
-import org.apache.tools.ant.filters.ReplaceTokens
+import org.apache.tools.ant.taskdefs.condition.Os
 
 buildscript {
     repositories {
@@ -32,20 +32,20 @@ def getVersionName = { ->
 
 def getAPIKey = { ->
     def stdout = new ByteArrayOutputStream()
-    if (Os.isFamily(Os.FAAMILY_LINUX)) {
+    if (Os.isFamily(Os.FAMILY_UNIX)) {
         exec {
             commandLine 'cat', '../apiKey'
             standardOutput = stdout
         }
         return stdout.toString().trim()
     }
-    return "0";
+
+    return '0'
 }
 
 version = getVersionName()
 group = modGroup
 archivesBaseName = modBaseName
-def apiToken = getAPIKey
 
 minecraft {
     version = project.forgeVersion
@@ -62,6 +62,7 @@ minecraft {
     replace '${version}', project.version
 
 }
+
 
 repositories {
     mavenCentral()
@@ -131,7 +132,7 @@ processResources {
 }
 
 curseforge {
-    apiKey = apiToken
+    apiKey = getApiKey()
     project {
         id = projectID
         changelog = file('changelog.txt')
