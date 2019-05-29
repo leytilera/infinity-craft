@@ -1,2 +1,2 @@
--Snap is now possible with Speedster Reality Stone
--HeroesExpansion abilities can now be disabled
+-Added StarTech compatiblity
+-Changed stone colors (are the new ones or the old ones better?)
