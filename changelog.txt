@@ -1,2 +1,2 @@
--Added StarTech compatiblity
--Changed stone colors (are the new ones or the old ones better?)
+-Added some TimeStone abilities
+-Replaced rabbit icons with stone icons
