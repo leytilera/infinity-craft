@@ -6,10 +6,12 @@ import anvil.infinity.data.GauntletUserInformation;
 import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
+import lucraft.mods.lucraftcore.superpowers.abilities.supplier.IAbilityProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
@@ -63,10 +65,13 @@ public class SnapHelper {
                 return true;
             } else if (data.selectedSnapResult == SnapResult.DESTROYSTONES) {
                     entity.setHealth(1);
-                    if (entity.getHeldItem(EnumHand.MAIN_HAND).getItem().equals(ModuleInfinity.INFINITY_GAUNTLET)) {
-                        entity.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(ModuleInfinity.INFINITY_GAUNTLET));
-                    } else {
-                        entity.setHeldItem(EnumHand.OFF_HAND, new ItemStack(ModuleInfinity.INFINITY_GAUNTLET));
+                    Item mainHand = entity.getHeldItemMainhand().getItem();
+                    Item offHand = entity.getHeldItemOffhand().getItem();
+                    if (mainHand instanceof IAbilityProvider) {
+                        entity.setHeldItem(EnumHand.MAIN_HAND, new ItemStack(mainHand));
+                    }
+                    if (offHand instanceof IAbilityProvider) {
+                        entity.setHeldItem(EnumHand.OFF_HAND, new ItemStack(offHand));
                     }
                     entity.attackEntityFrom(DamageSource.MAGIC, (entity.getHealth() / 10) - 0.01f);
 
