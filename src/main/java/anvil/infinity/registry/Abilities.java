@@ -24,6 +24,8 @@ public class Abilities {
         e.getRegistry().register(new AbilityEntry(AbilityKill.class, new ResourceLocation(Infinity.MOD_ID, "kill")));
         e.getRegistry().register(new AbilityEntry(AbilityChangeSnap.class, new ResourceLocation(Infinity.MOD_ID, "changesnap")));
         e.getRegistry().register(new AbilityEntry(AbilitySaturation.class, new ResourceLocation(Infinity.MOD_ID, "saturation")));
+        e.getRegistry().register(new AbilityEntry(AbilityFastForward.class, new ResourceLocation(Infinity.MOD_ID, "fast_forward")));
+        e.getRegistry().register(new AbilityEntry(AbilityStopTime.class, new ResourceLocation(Infinity.MOD_ID, "stop_time")));
     }
 
 
