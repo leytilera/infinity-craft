@@ -2,6 +2,8 @@ package anvil.infinity.items;
 
 import anvil.infinity.Infinity;
 import java.awt.*;
+
+import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.render.ItemRendererInfinityStone;
 import lucraft.mods.lucraftcore.util.helper.ItemHelper;
 import net.minecraft.item.Item;
@@ -38,11 +40,12 @@ public class Items {
     public static void onRegisterModels(ModelRegistryEvent e) {
         OBJLoader.INSTANCE.addDomain(Infinity.MOD_ID);
 
-        POWER_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(195, 42, 209), new Color(241, 42, 255)));
-        MIND_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(255, 211, 0), new Color(218, 255, 10)));
-        REALITY_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(225, 1, 48), new Color(255, 1, 48)));
-        SOUL_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(222, 115, 0), new Color(255, 139, 0)));
-        TIME_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(19, 207, 85), new Color(18, 231, 114)));
+        POWER_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.powerStoneColor), new Color(ConfigHandler.powerStoneShine)));
+        MIND_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.mindStoneColor), new Color(ConfigHandler.mindStoneShine)));
+        REALITY_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.realityStoneColor), new Color(ConfigHandler.realityStoneShine)));
+        SOUL_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.soulStoneColor), new Color(ConfigHandler.soulStoneShine)));
+        TIME_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.timeStoneColor), new Color(ConfigHandler.timeStoneShine)));
+
 
         ItemHelper.registerItemModel(POWER_STONE, Infinity.MOD_ID, "power_stone");
         ItemHelper.registerItemModel(MIND_STONE, Infinity.MOD_ID, "mind_stone");
