@@ -1,7 +1,7 @@
 package anvil.infinity.abilities;
 
-import anvil.infinity.data.EntityData;
-import anvil.infinity.data.GauntletUserInformation;
+import anvil.infinity.capabilities.GauntletUserInformation;
+import anvil.infinity.capabilities.ICapabilityPlayerData;
 import anvil.infinity.items.Items;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityAction;
 import net.minecraft.client.Minecraft;
@@ -22,10 +22,10 @@ public class AbilityChangeSnap extends AbilityAction {
 
     @Override
     public boolean action() {
-        EntityData data = GauntletUserInformation.getDataByEntity(entity);
-        data.selectedSnapResult = data.selectedSnapResult.next();
+        ICapabilityPlayerData data = GauntletUserInformation.getDataByEntity(entity);
+        data.setSnapResult(data.getSnapResult().next());
         if (entity instanceof EntityPlayer) {
-            ((EntityPlayer) entity).sendStatusMessage(new TextComponentString("Selected ability is: " + data.selectedSnapResult),true);
+            ((EntityPlayer) entity).sendStatusMessage(new TextComponentString("Selected ability is: " + data.getSnapResult()),true);
         }
         return true;
     }

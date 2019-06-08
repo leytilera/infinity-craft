@@ -1,5 +1,8 @@
 package anvil.infinity;
 
+import anvil.infinity.capabilities.Factory;
+import anvil.infinity.capabilities.ICapabilityPlayerData;
+import anvil.infinity.capabilities.Storage;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
 import anvil.infinity.networking.LookAbilityPackageHandler;
@@ -8,6 +11,7 @@ import anvil.infinity.networking.PackageKillAbility;
 import anvil.infinity.networking.PackageReq;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -52,7 +56,7 @@ public class Infinity {
         int netID = 0;
         NETWORK_WRAPPER.registerMessage(LookAbilityReturnPackageHandler.class, PackageKillAbility.class, netID++, Side.SERVER);
         NETWORK_WRAPPER.registerMessage(LookAbilityPackageHandler.class, PackageReq.class, netID++, Side.CLIENT);
-
+        CapabilityManager.INSTANCE.register(ICapabilityPlayerData.class, new Storage(), new Factory());
 
     }
 
