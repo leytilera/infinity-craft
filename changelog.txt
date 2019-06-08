@@ -1,2 +1,3 @@
--Added some TimeStone abilities
--Replaced rabbit icons with stone icons
+-Added Kill Evil Entities Snap ability
+-Stone Colors can be configured now
+-Improved data storage
