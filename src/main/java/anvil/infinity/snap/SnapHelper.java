@@ -5,9 +5,11 @@ import anvil.infinity.config.ConfigHandler;
 import anvil.infinity.capabilities.GauntletUserInformation;
 import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
+import lucraft.mods.lucraftcore.karma.capabilities.CapabilityKarma;
 import lucraft.mods.lucraftcore.superpowers.abilities.supplier.IAbilityProvider;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -96,11 +98,25 @@ public class SnapHelper {
                     entities.addAll(worlds[i].loadedEntityList);
                 }
 
+                PlayerList players = server.getPlayerList();
+
+                TextComponentString msg = new TextComponentString(entity.getName() + ": ");
+                msg.appendSibling(new TextComponentTranslation("infinity.snap.irontext"));
+                msg.getStyle().setColor(TextFormatting.RED);
+                msg.getStyle().setBold(true);
+                players.sendMessage(msg);
+
                 Random random = new Random();
                 for (int i = 0; i < entities.size(); i++) {
                     if (entities.get(i) != entity && entities.get(i) instanceof EntityLivingBase) {
                         EntityLivingBase e = ((EntityLivingBase) entities.get(i));
-                        e.addPotionEffect(new PotionEffect(Effects.snapEffect, random.nextInt((1200 - 10) + 1) - 10));
+                        if (e instanceof EntityMob) {
+                            e.addPotionEffect(new PotionEffect(Effects.snapEffect, random.nextInt((1200 - 10) + 1) - 10));
+                        } else if (e instanceof EntityPlayer && e.hasCapability(CapabilityKarma.KARMA_CAP, null)) {
+                            if (e.getCapability(CapabilityKarma.KARMA_CAP, null).getKarma() < 1) {
+                                e.addPotionEffect(new PotionEffect(Effects.snapEffect, random.nextInt((1200 - 10) + 1) - 10));
+                            }
+                        }
                     }
                 }
 
