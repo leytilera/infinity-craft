@@ -92,8 +92,8 @@ repositories {
 }
 
 dependencies {
-    deobfCompile 'com.gitlab.lcoremodders:LucraftCore:85e6c788'
-    deobfCompile 'com.gitlab.lcoremodders:HeroesExpansion:1.3.3'
+    deobfCompile 'com.gitlab.lcoremodders:LucraftCore:22057ced'
+    deobfCompile 'com.gitlab.lcoremodders:HeroesExpansion:860f629ed4'
     deobfCompile 'com.gitlab.lcoremodders:SpeedsterHeroes:1e4b1fb951'
     deobfCompile "star-tech-man-the-legendary-mod:star:tech:1.1.1"
     compile fileTree(dir: 'libs', include: ['*.jar'])
