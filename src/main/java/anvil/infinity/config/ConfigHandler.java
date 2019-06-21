@@ -62,6 +62,8 @@ public class ConfigHandler {
         mindStoneShine = config.getInt("Mind Stone shine", colorcat, 0xDAFF0A, 0x000000, 0xFFFFFF, "Shine color of the Mind Stone");
         soulStoneColor = config.getInt("Soul Stone color", colorcat, 0xDE7300, 0x000000, 0xFFFFFF, "Color of the Soul Stone");
         soulStoneShine = config.getInt("Soul Stone shine", colorcat, 0xFF8B00, 0x000000, 0xFFFFFF, "Shine color of the Soul Stone");
+        spaceStoneColor = config.getInt("Space Stone color", colorcat, 0x0255ff, 0x000000, 0xFFFFFF, "Color of the Space Stone");
+        spaceStoneShine = config.getInt("Space Stone shine", colorcat, 0x6ac5ff, 0x000000, 0xFFFFFF, "Shine color of the Space Stone");
 
     }
 

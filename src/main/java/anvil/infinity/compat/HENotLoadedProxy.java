@@ -11,4 +11,18 @@ public class HENotLoadedProxy implements HEProxy {
         return null;
     }
 
+    @Override
+    public Ability getAbilityForcefield(EntityLivingBase entity) {
+        return null;
+    }
+
+    @Override
+    public Ability getAbilityPortal(EntityLivingBase entity) {
+        return null;
+    }
+
+    @Override
+    public Ability getAbilityBlackhole(EntityLivingBase entity) {
+        return null;
+    }
 }

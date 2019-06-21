@@ -7,4 +7,10 @@ public interface HEProxy {
 
     Ability getAbilityGrabEntity(EntityLivingBase entity);
 
+    Ability getAbilityPortal(EntityLivingBase entity);
+
+    Ability getAbilityForcefield(EntityLivingBase entity);
+
+    Ability getAbilityBlackhole(EntityLivingBase entity);
+
 }

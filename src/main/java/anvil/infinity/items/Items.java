@@ -23,6 +23,7 @@ public class Items {
     public static Item REALITY_STONE = new ItemRealityStone("reality_stone");
     public static Item SOUL_STONE = new ItemSoulStone("soul_stone");
     public static Item TIME_STONE = new ItemTimeStone("time_stone");
+    public static  Item SPACE_STONE = new ItemSpaceStone("space_stone");
 
     @SubscribeEvent
     public static void onRegisterItems(RegistryEvent.Register<Item> e) {
@@ -32,6 +33,7 @@ public class Items {
         e.getRegistry().register(REALITY_STONE);
         e.getRegistry().register(SOUL_STONE);
         e.getRegistry().register(TIME_STONE);
+        e.getRegistry().register(SPACE_STONE);
 
     }
 
@@ -45,6 +47,7 @@ public class Items {
         REALITY_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.realityStoneColor), new Color(ConfigHandler.realityStoneShine)));
         SOUL_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.soulStoneColor), new Color(ConfigHandler.soulStoneShine)));
         TIME_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.timeStoneColor), new Color(ConfigHandler.timeStoneShine)));
+        SPACE_STONE.setTileEntityItemStackRenderer(new ItemRendererInfinityStone(new Color(ConfigHandler.spaceStoneColor), new Color(ConfigHandler.spaceStoneShine)));
 
 
         ItemHelper.registerItemModel(POWER_STONE, Infinity.MOD_ID, "power_stone");
@@ -52,6 +55,7 @@ public class Items {
         ItemHelper.registerItemModel(REALITY_STONE, Infinity.MOD_ID, "reality_stone");
         ItemHelper.registerItemModel(SOUL_STONE, Infinity.MOD_ID, "soul_stone");
         ItemHelper.registerItemModel(TIME_STONE, Infinity.MOD_ID, "time_stone");
+        ItemHelper.registerItemModel(SPACE_STONE, Infinity.MOD_ID, "space_stone");
 
     }
 
