@@ -12,6 +12,7 @@ import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityAttributeModifier;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityHealing;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityHealth;
+import lucraft.mods.lucraftcore.util.abilitybar.EnumAbilityBarColor;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -50,6 +51,11 @@ public class ItemSoulStone extends ItemInfinityStone {
         abilities.put("healing", new AbilityHealing(entity).setDataValue(AbilityHealing.FREQUENCY, 1));
         abilities.put("kill", new AbilityKill(entity, killCond));
         abilities.put("snap", new AbilitySnap(entity));
+
+        for (Ability ability : abilities.values()) {
+            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE);
+        }
+
         return super.addStoneAbilities(entity, abilities, context);
     }
 

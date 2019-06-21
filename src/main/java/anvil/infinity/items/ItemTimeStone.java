@@ -6,6 +6,7 @@ import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
+import lucraft.mods.lucraftcore.util.abilitybar.EnumAbilityBarColor;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -33,6 +34,11 @@ public class ItemTimeStone extends ItemInfinityStone {
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
         abilities.put("fast_forward", new AbilityFastForward(entity));
         abilities.put("stop_time", new AbilityStopTime(entity));
+
+        for (Ability ability : abilities.values()) {
+            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN);
+        }
+
         return super.addStoneAbilities(entity, abilities, context);
     }
 

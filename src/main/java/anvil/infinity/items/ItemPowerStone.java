@@ -8,6 +8,7 @@ import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.*;
 import lucraft.mods.lucraftcore.superpowers.abilities.supplier.IAbilityProvider;
+import lucraft.mods.lucraftcore.util.abilitybar.EnumAbilityBarColor;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -47,6 +48,11 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
             abilities.put("power_rocket_burst", CompatHandler.StarTech.getAbilityPowerRocketBurst(entity).setMaxCooldown(100));
             abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity));
         }
+
+        for (Ability ability : abilities.values()) {
+            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE);
+        }
+
         return super.addStoneAbilities(entity, abilities, context);
     }
 

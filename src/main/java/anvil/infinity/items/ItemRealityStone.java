@@ -8,6 +8,7 @@ import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityInvisibility;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilitySizeChange;
+import lucraft.mods.lucraftcore.util.abilitybar.EnumAbilityBarColor;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -42,6 +43,11 @@ public class ItemRealityStone extends ItemInfinityStone {
             abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity));
             abilities.put("turn_into_bubbles", CompatHandler.SpeedsterHeroes.getAbilityTurnIntoBubbles(entity));
         }
+
+        for (Ability ability : abilities.values()) {
+            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED);
+        }
+
         return super.addStoneAbilities(entity, abilities, context);
     }
 

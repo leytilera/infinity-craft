@@ -8,6 +8,7 @@ import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import lucraft.mods.lucraftcore.superpowers.abilities.AbilityFlight;
+import lucraft.mods.lucraftcore.util.abilitybar.EnumAbilityBarColor;
 import lucraft.mods.lucraftcore.util.helper.StringHelper;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -39,6 +40,11 @@ public class ItemMindStone extends ItemInfinityStone {
         if (CompatHandler.isHeroesExpansion && ConfigHandler.heAbilities) {
             abilities.put("telekinesis", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity));
         }
+
+        for (Ability ability : abilities.values()) {
+            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW);
+        }
+
         return super.addStoneAbilities(entity, abilities, context);
     }
 
