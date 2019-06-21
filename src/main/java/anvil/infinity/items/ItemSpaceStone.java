@@ -1,5 +1,6 @@
 package anvil.infinity.items;
 
+import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.helpers.GauntelHelper;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
@@ -40,6 +41,8 @@ public class ItemSpaceStone extends ItemInfinityStone {
                 abilities.put("blackhole", CompatHandler.HeroesExpension.getAbilityBlackhole(entity).setMaxCooldown(6000).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.LIGHT_BLUE));
             }
         }
+
+        AbilityAdderHandler.addAbilities(EnumInfinityStone.SPACE, entity, abilities);
 
 
         return super.addStoneAbilities(entity, abilities, context);

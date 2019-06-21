@@ -2,6 +2,7 @@ package anvil.infinity.items;
 
 import anvil.infinity.abilities.AbilityKill;
 import anvil.infinity.abilities.AbilitySnap;
+import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.conditions.ICondition;
 import anvil.infinity.config.ConfigHandler;
 import anvil.infinity.helpers.GauntelHelper;
@@ -52,6 +53,7 @@ public class ItemSoulStone extends ItemInfinityStone {
         abilities.put("kill", new AbilityKill(entity, killCond).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
         abilities.put("snap", new AbilitySnap(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
 
+        AbilityAdderHandler.addAbilities(EnumInfinityStone.SOUL, entity, abilities);
 
         return super.addStoneAbilities(entity, abilities, context);
     }

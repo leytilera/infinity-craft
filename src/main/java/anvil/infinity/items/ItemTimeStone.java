@@ -2,6 +2,7 @@ package anvil.infinity.items;
 
 import anvil.infinity.abilities.AbilityFastForward;
 import anvil.infinity.abilities.AbilityStopTime;
+import anvil.infinity.api.AbilityAdderHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
@@ -34,6 +35,8 @@ public class ItemTimeStone extends ItemInfinityStone {
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
         abilities.put("fast_forward", new AbilityFastForward(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN));
         abilities.put("stop_time", new AbilityStopTime(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN));
+
+        AbilityAdderHandler.addAbilities(EnumInfinityStone.TIME, entity, abilities);
 
 
         return super.addStoneAbilities(entity, abilities, context);

@@ -1,6 +1,7 @@
 package anvil.infinity.items;
 
 import anvil.infinity.abilities.AbilitySaturation;
+import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
@@ -48,6 +49,8 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
             abilities.put("power_rocket_burst", CompatHandler.StarTech.getAbilityPowerRocketBurst(entity).setMaxCooldown(100).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
             abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
         }
+
+        AbilityAdderHandler.addAbilities(EnumInfinityStone.POWER, entity, abilities);
 
 
         return super.addStoneAbilities(entity, abilities, context);

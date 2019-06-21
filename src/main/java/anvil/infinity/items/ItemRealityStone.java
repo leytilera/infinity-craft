@@ -1,5 +1,6 @@
 package anvil.infinity.items;
 
+import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
@@ -43,6 +44,8 @@ public class ItemRealityStone extends ItemInfinityStone {
             abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
             abilities.put("turn_into_bubbles", CompatHandler.SpeedsterHeroes.getAbilityTurnIntoBubbles(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
         }
+
+        AbilityAdderHandler.addAbilities(EnumInfinityStone.REALITY, entity, abilities);
 
         return super.addStoneAbilities(entity, abilities, context);
     }
