@@ -1,3 +1,4 @@
--Added Kill Evil Entities Snap ability
--Stone Colors can be configured now
--Improved data storage
+-Added own Space Stone
+-Changed stone detection systen (all stones will now be accepted for snap)
+-Added colors for ability bar
+-Added API to add stone abilities from other mods
