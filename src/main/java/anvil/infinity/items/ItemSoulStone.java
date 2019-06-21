@@ -1,6 +1,5 @@
 package anvil.infinity.items;
 
-import anvil.infinity.abilities.AbilityHasSoulStone;
 import anvil.infinity.abilities.AbilityKill;
 import anvil.infinity.abilities.AbilitySnap;
 import anvil.infinity.conditions.ICondition;
@@ -49,7 +48,6 @@ public class ItemSoulStone extends ItemInfinityStone {
             abilities.put("immortality", new AbilityHealth(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
         }
         abilities.put("healing", new AbilityHealing(entity).setDataValue(AbilityHealing.FREQUENCY, 1));
-        abilities.put("soul", new AbilityHasSoulStone(entity));
         abilities.put("kill", new AbilityKill(entity, killCond));
         abilities.put("snap", new AbilitySnap(entity));
         return super.addStoneAbilities(entity, abilities, context);

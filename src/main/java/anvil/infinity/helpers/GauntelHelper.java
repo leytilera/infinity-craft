@@ -1,37 +1,34 @@
 package anvil.infinity.helpers;
 
-import anvil.infinity.abilities.*;
-import anvil.infinity.compat.CompatHandler;
+import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
+import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import net.minecraft.entity.EntityLivingBase;
 
 public class GauntelHelper {
 
     public static boolean hasPowerStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityHasPowerStone.class);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.POWER) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.POWER);
     }
 
     public static boolean hasSpaceStone(EntityLivingBase entity) {
-        return CompatHandler.HeroesExpension.hasSpaceStone(entity);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.SPACE) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.SPACE);
     }
 
     public static boolean hasRealityStone(EntityLivingBase entity) {
-        if (CompatHandler.isSpeedsterHeroes) {
-            return CompatHandler.SpeedsterHeroes.hasRealityStone(entity);
-        }
-        return Ability.hasAbility(entity, AbilityHasRealityStone.class);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.REALITY) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.REALITY);
     }
 
     public static boolean hasSoulStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityHasSoulStone.class);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.SOUL) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.SOUL);
     }
 
     public static boolean hasTimeStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityHasTimeStone.class);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.TIME) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.TIME);
     }
 
     public static boolean hasMindStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityHasMindStone.class);
+        return ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.MAIN_HAND, EnumInfinityStone.MIND) || ItemInfinityStone.hasStone(entity, Ability.EnumAbilityContext.OFF_HAND, EnumInfinityStone.MIND);
     }
 
     public static boolean hasFullGauntlet(EntityLivingBase entity) {

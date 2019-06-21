@@ -13,8 +13,4 @@ public class HELoadedProxy implements HEProxy {
         return new AbilityGrabEntity(entity);
     }
 
-    @Override
-    public boolean hasSpaceStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityPortal.class);
-    }
 }

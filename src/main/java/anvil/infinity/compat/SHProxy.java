@@ -11,6 +11,4 @@ public interface SHProxy {
 
     Ability getAbilityTurnIntoBubbles(EntityLivingBase entity);
 
-    boolean hasRealityStone(EntityLivingBase entity);
-
 }

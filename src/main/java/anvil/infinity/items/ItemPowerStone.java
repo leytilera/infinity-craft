@@ -1,6 +1,5 @@
 package anvil.infinity.items;
 
-import anvil.infinity.abilities.AbilityHasPowerStone;
 import anvil.infinity.abilities.AbilitySaturation;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
@@ -37,7 +36,6 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        abilities.put("power", new AbilityHasPowerStone(entity));
         abilities.put("blast", new AbilityEnergyBlast(entity).setDataValue(AbilityEnergyBlast.DAMAGE, Float.MAX_VALUE).setDataValue(AbilityEnergyBlast.COLOR, Color.MAGENTA));
         abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
         abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));

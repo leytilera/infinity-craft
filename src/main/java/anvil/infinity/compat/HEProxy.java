@@ -7,6 +7,4 @@ public interface HEProxy {
 
     Ability getAbilityGrabEntity(EntityLivingBase entity);
 
-    boolean hasSpaceStone(EntityLivingBase entity);
-
 }

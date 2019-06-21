@@ -11,8 +11,4 @@ public class HENotLoadedProxy implements HEProxy {
         return null;
     }
 
-    @Override
-    public boolean hasSpaceStone(EntityLivingBase entity) {
-        return true;
-    }
 }

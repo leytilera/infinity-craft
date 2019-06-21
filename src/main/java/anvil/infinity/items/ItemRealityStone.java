@@ -1,6 +1,5 @@
 package anvil.infinity.items;
 
-import anvil.infinity.abilities.AbilityHasRealityStone;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
@@ -38,7 +37,6 @@ public class ItemRealityStone extends ItemInfinityStone {
             abilities.put("size", new AbilitySizeChange(entity).setDataValue(AbilitySizeChange.SIZE, ConfigHandler.size));
         }
         abilities.put("invisibility", new AbilityInvisibility(entity));
-        abilities.put("reality", new AbilityHasRealityStone(entity));
         if (CompatHandler.isSpeedsterHeroes && ConfigHandler.useSHRealityAbilities) {
             abilities.put("save_block", CompatHandler.SpeedsterHeroes.getAbilitySaveBlock(entity));
             abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity));

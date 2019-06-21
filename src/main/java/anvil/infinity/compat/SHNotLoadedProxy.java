@@ -1,6 +1,5 @@
 package anvil.infinity.compat;
 
-import anvil.infinity.abilities.AbilityHasRealityStone;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -21,9 +20,4 @@ public class SHNotLoadedProxy implements SHProxy {
         return null;
     }
 
-
-    @Override
-    public boolean hasRealityStone(EntityLivingBase entity) {
-        return Ability.hasAbility(entity, AbilityHasRealityStone.class);
-    }
 }
