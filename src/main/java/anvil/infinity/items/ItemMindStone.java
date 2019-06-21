@@ -35,15 +35,12 @@ public class ItemMindStone extends ItemInfinityStone {
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        abilities.put("flight", new AbilityFlight(entity).setDataValue(AbilityFlight.SPEED, 1f));
-        abilities.put("changesnap", new AbilityChangeSnap(entity));
+        abilities.put("flight", new AbilityFlight(entity).setDataValue(AbilityFlight.SPEED, 1f).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
+        abilities.put("changesnap", new AbilityChangeSnap(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
         if (CompatHandler.isHeroesExpansion && ConfigHandler.heAbilities) {
-            abilities.put("telekinesis", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity));
+            abilities.put("telekinesis", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
         }
 
-        for (Ability ability : abilities.values()) {
-            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW);
-        }
 
         return super.addStoneAbilities(entity, abilities, context);
     }

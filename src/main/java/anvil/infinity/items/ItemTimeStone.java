@@ -32,12 +32,9 @@ public class ItemTimeStone extends ItemInfinityStone {
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        abilities.put("fast_forward", new AbilityFastForward(entity));
-        abilities.put("stop_time", new AbilityStopTime(entity));
+        abilities.put("fast_forward", new AbilityFastForward(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN));
+        abilities.put("stop_time", new AbilityStopTime(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN));
 
-        for (Ability ability : abilities.values()) {
-            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.GREEN);
-        }
 
         return super.addStoneAbilities(entity, abilities, context);
     }

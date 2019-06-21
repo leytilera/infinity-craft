@@ -46,15 +46,12 @@ public class ItemSoulStone extends ItemInfinityStone {
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
         if (ConfigHandler.soulHealthBoost) {
-            abilities.put("immortality", new AbilityHealth(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+            abilities.put("immortality", new AbilityHealth(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
         }
-        abilities.put("healing", new AbilityHealing(entity).setDataValue(AbilityHealing.FREQUENCY, 1));
-        abilities.put("kill", new AbilityKill(entity, killCond));
-        abilities.put("snap", new AbilitySnap(entity));
+        abilities.put("healing", new AbilityHealing(entity).setDataValue(AbilityHealing.FREQUENCY, 1).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
+        abilities.put("kill", new AbilityKill(entity, killCond).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
+        abilities.put("snap", new AbilitySnap(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
 
-        for (Ability ability : abilities.values()) {
-            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE);
-        }
 
         return super.addStoneAbilities(entity, abilities, context);
     }

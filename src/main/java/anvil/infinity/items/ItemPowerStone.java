@@ -37,21 +37,18 @@ public class ItemPowerStone extends ItemInfinityStone implements IAbilityProvide
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        abilities.put("blast", new AbilityEnergyBlast(entity).setDataValue(AbilityEnergyBlast.DAMAGE, Float.MAX_VALUE).setDataValue(AbilityEnergyBlast.COLOR, Color.MAGENTA));
-        abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
-        abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE));
-        abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE));
+        abilities.put("blast", new AbilityEnergyBlast(entity).setDataValue(AbilityEnergyBlast.DAMAGE, Float.MAX_VALUE).setDataValue(AbilityEnergyBlast.COLOR, Color.MAGENTA).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+        abilities.put("strength", new AbilityStrength(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+        abilities.put("damage", new AbilityPunch(entity).setDataValue(AbilityPunch.AMOUNT, Float.MAX_VALUE).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+        abilities.put("resistance", new AbilityDamageResistance(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
         abilities.put("saturation", new AbilitySaturation(entity));
         if (CompatHandler.isStarTech && ConfigHandler.stAbilities) {
-            abilities.put("power_blat", CompatHandler.StarTech.getAbilityPowerBlast(entity).setMaxCooldown(ConfigHandler.powerCooldown));
-            abilities.put("power_impower", CompatHandler.StarTech.getAbilityPowerImpower(entity));
-            abilities.put("power_rocket_burst", CompatHandler.StarTech.getAbilityPowerRocketBurst(entity).setMaxCooldown(100));
-            abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity));
+            abilities.put("power_blat", CompatHandler.StarTech.getAbilityPowerBlast(entity).setMaxCooldown(ConfigHandler.powerCooldown).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+            abilities.put("power_impower", CompatHandler.StarTech.getAbilityPowerImpower(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+            abilities.put("power_rocket_burst", CompatHandler.StarTech.getAbilityPowerRocketBurst(entity).setMaxCooldown(100).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
+            abilities.put("power_tendrils", CompatHandler.StarTech.getAbilityTendrils(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE));
         }
 
-        for (Ability ability : abilities.values()) {
-            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.PURPLE);
-        }
 
         return super.addStoneAbilities(entity, abilities, context);
     }

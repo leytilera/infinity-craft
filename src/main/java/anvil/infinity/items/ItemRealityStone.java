@@ -35,17 +35,13 @@ public class ItemRealityStone extends ItemInfinityStone {
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
         if (ConfigHandler.sizeChanging) {
-            abilities.put("size", new AbilitySizeChange(entity).setDataValue(AbilitySizeChange.SIZE, ConfigHandler.size));
+            abilities.put("size", new AbilitySizeChange(entity).setDataValue(AbilitySizeChange.SIZE, ConfigHandler.size).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
         }
-        abilities.put("invisibility", new AbilityInvisibility(entity));
+        abilities.put("invisibility", new AbilityInvisibility(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
         if (CompatHandler.isSpeedsterHeroes && ConfigHandler.useSHRealityAbilities) {
-            abilities.put("save_block", CompatHandler.SpeedsterHeroes.getAbilitySaveBlock(entity));
-            abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity));
-            abilities.put("turn_into_bubbles", CompatHandler.SpeedsterHeroes.getAbilityTurnIntoBubbles(entity));
-        }
-
-        for (Ability ability : abilities.values()) {
-            ability.setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED);
+            abilities.put("save_block", CompatHandler.SpeedsterHeroes.getAbilitySaveBlock(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
+            abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
+            abilities.put("turn_into_bubbles", CompatHandler.SpeedsterHeroes.getAbilityTurnIntoBubbles(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
         }
 
         return super.addStoneAbilities(entity, abilities, context);
