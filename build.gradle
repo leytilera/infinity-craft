@@ -13,10 +13,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'com.matthewprenger.cursegradle' version '1.2.0'
-}
-
 apply plugin: "net.minecraftforge.gradle.forge"
 apply plugin: 'idea'
 
@@ -30,25 +26,9 @@ def getVersionName = { ->
     return stdout.toString().trim()
 }
 
-def getAPIKey = { ->
-    def stdout = new ByteArrayOutputStream()
-    try {
-        exec {
-            commandLine 'cat', '../apiKey'
-            standardOutput = stdout
-        }
-        return stdout.toString().trim()
-    } catch(Exception e) {
-        return '0'
-    }
-
-
-}
-
 version = getVersionName()
 group = modGroup
 archivesBaseName = modBaseName
-String apiToken = getAPIKey()
 
 minecraft {
     version = project.forgeVersion
@@ -93,10 +73,10 @@ repositories {
 }
 
 dependencies {
-    deobfCompile 'com.gitlab.lcoremodders:LucraftCore:22057ced'
-    deobfCompile 'com.gitlab.lcoremodders:HeroesExpansion:860f629ed4'
-    deobfCompile 'com.gitlab.lcoremodders:SpeedsterHeroes:1e4b1fb951'
-    deobfCompile "star-tech-man-the-legendary-mod:star:tech:1.1.1"
+    compile 'com.gitlab.lcoremodders:LucraftCore:22057ced'
+    compile 'com.gitlab.lcoremodders:HeroesExpansion:860f629ed4'
+    compile 'com.gitlab.lcoremodders:SpeedsterHeroes:1e4b1fb951'
+    compile "star-tech-man-the-legendary-mod:star:tech:1.1.1"
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
@@ -132,24 +112,6 @@ processResources {
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
         exclude "mcmod.info"
-    }
-}
-
-curseforge {
-    apiKey = apiToken
-    project {
-        id = projectID
-        changelog = file('changelog.txt')
-        releaseType = "beta"
-        addGameVersion '1.12.2'
-
-        mainArtifact(jar) {
-            displayName = "Infinity Craft $getVersionName"
-            relations {
-                requiredDependency 'lucraft-core'
-                optionalDependency 'heroesexpansion'
-            }
-        }
     }
 }
 

@@ -5,6 +5,7 @@ import anvil.infinity.abilities.AbilitySnap;
 import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.conditions.ICondition;
 import anvil.infinity.config.ConfigHandler;
+import anvil.infinity.config.ModConfig;
 import anvil.infinity.helpers.GauntelHelper;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
@@ -46,7 +47,7 @@ public class ItemSoulStone extends ItemInfinityStone {
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        if (ConfigHandler.soulHealthBoost) {
+        if (ModConfig.General.soulHealthBoost) {
             abilities.put("immortality", new AbilityHealth(entity).setDataValue(AbilityAttributeModifier.AMOUNT, Float.MAX_VALUE).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));
         }
         abilities.put("healing", new AbilityHealing(entity).setDataValue(AbilityHealing.FREQUENCY, 1).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.ORANGE));

@@ -4,6 +4,7 @@ import anvil.infinity.abilities.AbilityChangeSnap;
 import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
+import anvil.infinity.config.ModConfig;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
@@ -38,7 +39,7 @@ public class ItemMindStone extends ItemInfinityStone {
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
         abilities.put("flight", new AbilityFlight(entity).setDataValue(AbilityFlight.SPEED, 1f).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
         abilities.put("changesnap", new AbilityChangeSnap(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
-        if (CompatHandler.isHeroesExpansion && ConfigHandler.heAbilities) {
+        if (CompatHandler.isHeroesExpansion && ModConfig.General.heAbilities) {
             abilities.put("telekinesis", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.YELLOW));
         }
 

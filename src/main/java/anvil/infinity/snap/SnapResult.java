@@ -1,6 +1,7 @@
 package anvil.infinity.snap;
 
 import anvil.infinity.config.ConfigHandler;
+import anvil.infinity.config.ModConfig;
 
 public enum SnapResult {
 
@@ -24,7 +25,7 @@ public enum SnapResult {
             case DESTROYSTONES: return BRINGBACK;
             case BRINGBACK: return RECREATE;
             case RECREATE: return KILLEVIL;
-            case KILLEVIL: if (ConfigHandler.snapCreative) {return CREATIVE;} else {return KILLHALF;}
+            case KILLEVIL: if (ModConfig.General.snapCreative) {return CREATIVE;} else {return KILLHALF;}
             case CREATIVE: return KILLHALF;
         }
         return KILLHALF;

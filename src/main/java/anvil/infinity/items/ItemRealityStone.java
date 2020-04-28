@@ -3,6 +3,7 @@ package anvil.infinity.items;
 import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
+import anvil.infinity.config.ModConfig;
 import lucraft.mods.lucraftcore.infinity.EnumInfinityStone;
 import lucraft.mods.lucraftcore.infinity.ModuleInfinity;
 import lucraft.mods.lucraftcore.infinity.items.ItemInfinityStone;
@@ -35,11 +36,11 @@ public class ItemRealityStone extends ItemInfinityStone {
 
     @Override
     public Ability.AbilityMap addStoneAbilities(EntityLivingBase entity, Ability.AbilityMap abilities, Ability.EnumAbilityContext context) {
-        if (ConfigHandler.sizeChanging) {
-            abilities.put("size", new AbilitySizeChange(entity).setDataValue(AbilitySizeChange.SIZE, ConfigHandler.size).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
+        if (ModConfig.General.sizeChanging) {
+            abilities.put("size", new AbilitySizeChange(entity).setDataValue(AbilitySizeChange.SIZE, ModConfig.General.size).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
         }
         abilities.put("invisibility", new AbilityInvisibility(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
-        if (CompatHandler.isSpeedsterHeroes && ConfigHandler.useSHRealityAbilities) {
+        if (CompatHandler.isSpeedsterHeroes && ModConfig.General.useSHRealityAbilities) {
             abilities.put("save_block", CompatHandler.SpeedsterHeroes.getAbilitySaveBlock(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
             abilities.put("change_block", CompatHandler.SpeedsterHeroes.getAbilityChangeBlock(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));
             abilities.put("turn_into_bubbles", CompatHandler.SpeedsterHeroes.getAbilityTurnIntoBubbles(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.RED));

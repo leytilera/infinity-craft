@@ -3,6 +3,7 @@ package anvil.infinity.snap;
 import anvil.infinity.capabilities.ICapabilityPlayerData;
 import anvil.infinity.config.ConfigHandler;
 import anvil.infinity.capabilities.GauntletUserInformation;
+import anvil.infinity.config.ModConfig;
 import anvil.infinity.helpers.GauntelHelper;
 import anvil.infinity.registry.Effects;
 import lucraft.mods.lucraftcore.karma.capabilities.CapabilityKarma;
@@ -77,7 +78,7 @@ public class SnapHelper {
 
 
             } else if (data.getSnapResult() == SnapResult.CREATIVE) {
-                if (ConfigHandler.snapCreative) {
+                if (ModConfig.General.snapCreative) {
                     if (entity instanceof EntityPlayer) {
 
                         if (((EntityPlayer) entity).capabilities.isCreativeMode) {

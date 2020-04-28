@@ -7,15 +7,6 @@ import java.io.File;
 public class ConfigHandler {
 
     public static Configuration config;
-    public static boolean soulHealthBoost;
-    public static boolean useSHRealityAbilities;
-    public static boolean sizeChanging;
-    public static float size;
-    public static int soulWorldID;
-    public static boolean snapCreative;
-    public static boolean heAbilities;
-    public static int powerCooldown;
-    public static boolean stAbilities;
 
     public static int powerStoneColor;
     public static int powerStoneShine;
@@ -40,18 +31,7 @@ public class ConfigHandler {
     }
 
     private static void syncConfig() {
-        String category = Configuration.CATEGORY_GENERAL;
         String colorcat = Configuration.CATEGORY_CLIENT;
-        soulHealthBoost = config.getBoolean("Soul Stone health boost", category, true, "Should the Soul Stone have a health boost");
-        useSHRealityAbilities = config.getBoolean("SH Reality Stone abilities", category, false, "Should the Reality Stone have the abilities of the Speedster Heroes Reality Stone if it is installed");
-        sizeChanging = config.getBoolean("Size changing", category, true, "Should the Reality Stone be able to change the size");
-        size = config.getFloat("Size", category, 0.1f, 0.1f,10, "Which size should the Reality Stone change it's user to");
-        soulWorldID = config.getInt("Soul World ID", category, 10, -255, 255, "The ID of the Soul World Dimension");
-        snapCreative = config.getBoolean("Can Snap change Gamemode", category, false, "Can the Snap change the Gamemode to Creative");
-        heAbilities = config.getBoolean("HeroesExpansion Abilities", category, true, "Should some stones use abilities from HeroesExpansion");
-        stAbilities = config.getBoolean("StarTech Abilities", category, true, "Should the Power Stone use the abilities from the StarTech Power Stone if installed");
-        powerCooldown = config.getInt("Power Burst Cooldown", category, 100, 0, 1000, "How big long should the StarTech Power Stone burst cooldown be");
-
         powerStoneColor = config.getInt("Power Stone color", colorcat, 0xC32AD1, 0x000000, 0xFFFFFF, "Color of the Power Stone");
         powerStoneShine = config.getInt("Power Stone shine", colorcat, 0xF12AFF, 0x000000, 0xFFFFFF, "Shine color of the Power Stone");
         realityStoneColor = config.getInt("Reality Stone color", colorcat, 0xFF0130, 0x000000, 0xFFFFFF, "Color of the Reality Stone");
