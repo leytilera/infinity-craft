@@ -19,6 +19,7 @@ public class Abilities {
         e.getRegistry().register(new AbilityEntry(AbilitySaturation.class, new ResourceLocation(Infinity.MOD_ID, "saturation")));
         e.getRegistry().register(new AbilityEntry(AbilityFastForward.class, new ResourceLocation(Infinity.MOD_ID, "fast_forward")));
         e.getRegistry().register(new AbilityEntry(AbilityStopTime.class, new ResourceLocation(Infinity.MOD_ID, "stop_time")));
+        e.getRegistry().register(new AbilityEntry(AbilityLocate.class, new ResourceLocation(Infinity.MOD_ID, "locate")));
     }
 
 

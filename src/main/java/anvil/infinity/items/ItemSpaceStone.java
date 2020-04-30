@@ -1,5 +1,6 @@
 package anvil.infinity.items;
 
+import anvil.infinity.abilities.AbilityLocate;
 import anvil.infinity.api.AbilityAdderHandler;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.helpers.GauntelHelper;
@@ -36,6 +37,7 @@ public class ItemSpaceStone extends ItemInfinityStone {
             abilities.put("portal", CompatHandler.HeroesExpension.getAbilityPortal(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.LIGHT_BLUE));
             abilities.put("grab_entity", CompatHandler.HeroesExpension.getAbilityGrabEntity(entity).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.LIGHT_BLUE));
             abilities.put("forcefield", CompatHandler.HeroesExpension.getAbilityForcefield(entity).setMaxCooldown(60).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.LIGHT_BLUE));
+            abilities.put("locate", new AbilityLocate(entity));
 
             if (GauntelHelper.hasPowerStone(entity)) {
                 abilities.put("blackhole", CompatHandler.HeroesExpension.getAbilityBlackhole(entity).setMaxCooldown(6000).setDataValue(Ability.BAR_COLOR, EnumAbilityBarColor.LIGHT_BLUE));

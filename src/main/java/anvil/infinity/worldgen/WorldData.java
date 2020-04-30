@@ -24,6 +24,20 @@ public class WorldData extends WorldSavedData {
     public boolean time;
     public boolean mind;
 
+    public int powerx;
+    public int spacex;
+    public int realityx;
+    public int soulx;
+    public int timex;
+    public int mindx;
+
+    public int powerz;
+    public int spacez;
+    public int realityz;
+    public int soulz;
+    public int timez;
+    public int mindz;
+
     @Override
     public void readFromNBT(NBTTagCompound nbt) {
         power = nbt.getBoolean("power");
@@ -33,6 +47,19 @@ public class WorldData extends WorldSavedData {
         time = nbt.getBoolean("time");
         mind = nbt.getBoolean("mind");
 
+        powerx = nbt.getInteger("powerX");
+        spacex = nbt.getInteger("spaceX");
+        realityx = nbt.getInteger("realityX");
+        soulx = nbt.getInteger("soulX");
+        timex = nbt.getInteger("timeX");
+        mindx = nbt.getInteger("mindX");
+
+        powerz = nbt.getInteger("powerZ");
+        spacez = nbt.getInteger("spaceZ");
+        realityz = nbt.getInteger("realityZ");
+        soulz = nbt.getInteger("soulZ");
+        timez = nbt.getInteger("timeZ");
+        mindz = nbt.getInteger("mindZ");
     }
 
     @Override
@@ -43,6 +70,20 @@ public class WorldData extends WorldSavedData {
         compound.setBoolean("soul", soul);
         compound.setBoolean("time", time);
         compound.setBoolean("mind", mind);
+
+        compound.setInteger("powerX", powerx);
+        compound.setInteger("spaceX", spacex);
+        compound.setInteger("realityX", realityx);
+        compound.setInteger("soulX", soulx);
+        compound.setInteger("timeX", timex);
+        compound.setInteger("mindX", mindx);
+
+        compound.setInteger("powerZ", powerz);
+        compound.setInteger("spaceZ", spacez);
+        compound.setInteger("realityZ", realityz);
+        compound.setInteger("soulZ", soulz);
+        compound.setInteger("timeZ", timez);
+        compound.setInteger("mindZ", mindz);
 
         return compound;
     }

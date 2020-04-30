@@ -17,7 +17,6 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
 import net.minecraft.util.text.TextComponentString;
-import net.minecraft.util.text.TextComponentTranslation;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
@@ -38,6 +37,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.MIND_STONE);
             WorldData data = WorldData.get(world);
             data.mind = true;
+            data.mindx = position.getX();
+            data.mindz = position.getZ();
             data.markDirty();
             sendMessage("Mind", world);
             return true;
@@ -45,6 +46,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.SPACE_STONE);
             WorldData data = WorldData.get(world);
             data.space = true;
+            data.spacex = position.getX();
+            data.spacez = position.getZ();
             data.markDirty();
             sendMessage("Space", world);
             return true;
@@ -52,6 +55,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.REALITY_STONE);
             WorldData data = WorldData.get(world);
             data.reality = true;
+            data.realityx = position.getX();
+            data.realityz = position.getZ();
             data.markDirty();
             sendMessage("Reality", world);
             return true;
@@ -59,6 +64,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.TIME_STONE);
             WorldData data = WorldData.get(world);
             data.time = true;
+            data.timex = position.getX();
+            data.timez = position.getZ();
             data.markDirty();
             sendMessage("Time", world);
             return true;
@@ -66,6 +73,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.SOUL_STONE);
             WorldData data = WorldData.get(world);
             data.soul = true;
+            data.soulx = position.getX();
+            data.soulz = position.getZ();
             data.markDirty();
             sendMessage("Soul", world);
             return true;
@@ -73,6 +82,8 @@ public class StoneTempleGen extends WorldGenerator {
             gen(world, position, Items.POWER_STONE);
             WorldData data = WorldData.get(world);
             data.power = true;
+            data.powerx = position.getX();
+            data.powerz = position.getZ();
             data.markDirty();
             sendMessage("Power", world);
             return true;
