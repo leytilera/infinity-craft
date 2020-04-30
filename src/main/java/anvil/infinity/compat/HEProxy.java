@@ -13,4 +13,6 @@ public interface HEProxy {
 
     Ability getAbilityBlackhole(EntityLivingBase entity);
 
+    boolean canLocate(EntityLivingBase entity);
+
 }

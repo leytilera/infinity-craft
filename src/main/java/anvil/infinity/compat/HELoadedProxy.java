@@ -4,6 +4,8 @@ import lucraft.mods.heroesexpansion.abilities.AbilityBlackHole;
 import lucraft.mods.heroesexpansion.abilities.AbilityForceField;
 import lucraft.mods.heroesexpansion.abilities.AbilityGrabEntity;
 import lucraft.mods.heroesexpansion.abilities.AbilityPortal;
+import lucraft.mods.heroesexpansion.superpowers.HESuperpowers;
+import lucraft.mods.lucraftcore.superpowers.SuperpowerHandler;
 import lucraft.mods.lucraftcore.superpowers.abilities.Ability;
 import net.minecraft.entity.EntityLivingBase;
 
@@ -27,5 +29,10 @@ public class HELoadedProxy implements HEProxy {
     @Override
     public Ability getAbilityBlackhole(EntityLivingBase entity) {
         return new AbilityBlackHole(entity);
+    }
+
+    @Override
+    public boolean canLocate(EntityLivingBase entity) {
+        return SuperpowerHandler.hasSuperpower(entity, HESuperpowers.GOD_OF_THUNDER);
     }
 }

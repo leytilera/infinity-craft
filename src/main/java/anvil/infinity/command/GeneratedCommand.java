@@ -32,7 +32,7 @@ public class GeneratedCommand extends CommandBase {
         if (sender instanceof EntityLivingBase) {
             locate = Ability.hasAbility((EntityLivingBase) sender, AbilityLocate.class);
             if (CompatHandler.isHeroesExpansion) {
-                locate = locate || SuperpowerHandler.hasSuperpower((EntityLivingBase) sender, HESuperpowers.GOD_OF_THUNDER);
+                locate = locate || CompatHandler.HeroesExpension.canLocate((EntityLivingBase) sender);
             }
         }
         WorldData data = WorldData.get(server.getWorld(0));

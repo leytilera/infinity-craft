@@ -25,4 +25,9 @@ public class HENotLoadedProxy implements HEProxy {
     public Ability getAbilityBlackhole(EntityLivingBase entity) {
         return null;
     }
+
+    @Override
+    public boolean canLocate(EntityLivingBase entity) {
+        return false;
+    }
 }
