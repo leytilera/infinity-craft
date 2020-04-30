@@ -23,10 +23,16 @@ public class InfinityWorldGenerator extends WorldGenerator implements IWorldGene
     @Override
     public void generate(Random random, int chunkX, int chunkZ, World world, IChunkGenerator chunkGenerator, IChunkProvider chunkProvider) {
         int dim = world.provider.getDimension();
+        if (ModConfig.Worldgen.debug)
+            System.out.println("Chunk generation in Dim: " + dim);
+
         if ( (chunkX > 1000 || chunkX < -1000) && (chunkZ > 1000 || chunkZ < -1000) && ModConfig.Worldgen.enable ) {
             int blockX = chunkX * 16 + 8;
             int blockZ = chunkZ * 16 + 8;
             if (canGenMind(world) || canGenPower(world) || canGenReality(world) || canGenSoul(world) || canGenSpace(world) || canGenTime(world)) {
+                if (ModConfig.Worldgen.debug)
+                    System.out.println("A Stone can be generted here");
+
                 if ((int) (Math.random() * 1000) == 0) {
                     int y = getGroundFromAbove(world, blockX, blockZ);
                     BlockPos pos = new BlockPos(blockX, y, blockZ);

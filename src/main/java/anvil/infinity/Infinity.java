@@ -3,6 +3,7 @@ package anvil.infinity;
 import anvil.infinity.capabilities.Factory;
 import anvil.infinity.capabilities.ICapabilityPlayerData;
 import anvil.infinity.capabilities.Storage;
+import anvil.infinity.command.GeneratedCommand;
 import anvil.infinity.compat.CompatHandler;
 import anvil.infinity.config.ConfigHandler;
 import anvil.infinity.config.ModConfig;
@@ -18,6 +19,7 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -67,6 +69,12 @@ public class Infinity {
     @Mod.EventHandler
     public void postinit(FMLPostInitializationEvent event) {
 
+    }
+
+    @Mod.EventHandler
+    public static void init(FMLServerStartingEvent event)
+    {
+        event.registerServerCommand(new GeneratedCommand());
     }
 
 

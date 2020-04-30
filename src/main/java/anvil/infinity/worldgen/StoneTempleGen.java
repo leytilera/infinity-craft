@@ -8,6 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.management.PlayerList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.Mirror;
@@ -15,6 +16,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.ChunkPos;
+import net.minecraft.util.text.TextComponentString;
+import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldServer;
 import net.minecraft.world.gen.feature.WorldGenerator;
@@ -35,36 +39,42 @@ public class StoneTempleGen extends WorldGenerator {
             WorldData data = WorldData.get(world);
             data.mind = true;
             data.markDirty();
+            sendMessage("Mind", world);
             return true;
         }  else if (InfinityWorldGenerator.canGenSpace(world)) {
             gen(world, position, Items.SPACE_STONE);
             WorldData data = WorldData.get(world);
             data.space = true;
             data.markDirty();
+            sendMessage("Space", world);
             return true;
         } else if (InfinityWorldGenerator.canGenReality(world)) {
             gen(world, position, Items.REALITY_STONE);
             WorldData data = WorldData.get(world);
             data.reality = true;
             data.markDirty();
+            sendMessage("Reality", world);
             return true;
         } else if (InfinityWorldGenerator.canGenTime(world)) {
             gen(world, position, Items.TIME_STONE);
             WorldData data = WorldData.get(world);
             data.time = true;
             data.markDirty();
+            sendMessage("Time", world);
             return true;
         } else if (InfinityWorldGenerator.canGenSoul(world)) {
             gen(world, position, Items.SOUL_STONE);
             WorldData data = WorldData.get(world);
             data.soul = true;
             data.markDirty();
+            sendMessage("Soul", world);
             return true;
         } else if (InfinityWorldGenerator.canGenPower(world)) {
             gen(world, position, Items.POWER_STONE);
             WorldData data = WorldData.get(world);
             data.power = true;
             data.markDirty();
+            sendMessage("Power", world);
             return true;
         }
         return false;
@@ -102,6 +112,16 @@ public class StoneTempleGen extends WorldGenerator {
                 }
             }
         }
+    }
+
+    void sendMessage(String stone, World world) {
+        MinecraftServer server = world.getMinecraftServer();
+        assert server != null;
+        PlayerList players = server.getPlayerList();
+        TextComponentString msg = new TextComponentString("The " + stone + " Stone has been generated");
+        msg.getStyle().setColor(TextFormatting.GOLD);
+        msg.getStyle().setBold(true);
+        players.sendMessage(msg);
     }
 
 }

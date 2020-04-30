@@ -72,6 +72,10 @@ public class ModConfig {
         @Config.Name("Mind Stone Dimension")
         public static int mindDim = 0;
 
+        @Config.Name("Worldgen Debug")
+        @Config.Comment("WARNING: Console Spam")
+        public static boolean debug = false;
+
     }
 
 }

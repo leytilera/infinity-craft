@@ -13,6 +13,10 @@ public class WorldData extends WorldSavedData {
         super(NAME);
     }
 
+    public WorldData(String name) {
+        super(name);
+    }
+
     public boolean power;
     public boolean space;
     public boolean reality;
